@@ -1,8 +1,10 @@
-import React, { useState } from "react";
-import { useAppSelector } from "../../redux/store";
+import { useState } from "react";
+import { useAppDispatch, useAppSelector } from "../../redux/store";
 import { Tooltip, Button } from "@material-tailwind/react";
+import { addToCart } from "../../redux/slices/cartSlice";
 
 export const SingleProduct = () => {
+	const dispatch = useAppDispatch();
 	const product = useAppSelector((state) => state.products.singleProduct);
 	const productSize = product.size ? product.size[0] : "";
 	const [size, setSize] = useState(productSize);
@@ -78,7 +80,19 @@ export const SingleProduct = () => {
 							color="gray"
 							size="lg"
 							variant="outlined"
-							ripple={true}>
+							ripple={true}
+							onClick={() =>
+								dispatch(
+									addToCart({
+										id: product.id,
+										size: size,
+										color: color,
+										price: product.price,
+										totalPrice: product.price,
+										amount: 1,
+									})
+								)
+							}>
 							Add to cart
 						</Button>
 					</Tooltip>
