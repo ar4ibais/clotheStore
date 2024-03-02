@@ -1,4 +1,6 @@
+import FilteredProducts from "../FilteredProducts";
 import Navbar from "../Navbar";
+import NavigateButtons from "../NavigateButtons";
 import Slider from "../Slider";
 
 const Main = () => {
@@ -6,6 +8,8 @@ const Main = () => {
 		<>
 			<Navbar />
 			<Slider />
+			<NavigateButtons />
+			<FilteredProducts />
 		</>
 	);
 };

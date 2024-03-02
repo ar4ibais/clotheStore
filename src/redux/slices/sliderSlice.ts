@@ -1,7 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
 import type { PayloadAction } from "@reduxjs/toolkit";
 import { sliderData } from "../../assets/data/dummyData";
-import { act } from "react-dom/test-utils";
 
 export interface SliderState {
 	value: number;

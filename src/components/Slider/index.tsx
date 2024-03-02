@@ -1,15 +1,14 @@
-import { useSelector } from "react-redux";
 import { dotSlide, nextSlide, prevSlide } from "../../redux/slices/sliderSlice";
-import { useAppDispatch } from "../../redux/store";
+import { useAppDispatch, useAppSelector } from "../../redux/store";
 import { sliderData } from "../../assets/data/dummyData";
 
 const Slider = () => {
 	const dispatch = useAppDispatch();
-	const slideIndex = useSelector((state) => state.slider.value);
+	const slideIndex = useAppSelector((state) => state.slider.value);
 	return (
 		<div className="relative pb-4">
 			<div>
-				{sliderData.map((item, index) => {
+				{sliderData.map((item) => {
 					return (
 						<div
 							key={item.id}
