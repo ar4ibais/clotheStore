@@ -15,10 +15,12 @@ export type Product = {
 
 type productState = {
 	filteredProducts: Product[];
+	singleProduct: Product;
 };
 
 const initialState: productState = {
 	filteredProducts: JSON.parse(sessionStorage.getItem("filteredData")) || [],
+	singleProduct: JSON.parse(sessionStorage.getItem("oneProduct")) || [],
 };
 
 export const productsSlice = createSlice({
@@ -37,8 +39,20 @@ export const productsSlice = createSlice({
 				console.error(err);
 			}
 		},
+		singleProduct: (state, action: PayloadAction<string>) => {
+			try {
+				const oneProduct = storeData.filter(
+					(product) => product.id === action.payload
+				);
+				state.singleProduct = oneProduct[0];
+				const saveState = JSON.stringify(oneProduct[0]);
+				sessionStorage.setItem("oneProduct", saveState);
+			} catch (error) {
+				console.error(error);
+			}
+		},
 	},
 });
 
-export const { filterProducts } = productsSlice.actions;
+export const { filterProducts, singleProduct } = productsSlice.actions;
 export default productsSlice.reducer;

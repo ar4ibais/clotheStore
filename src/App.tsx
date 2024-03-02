@@ -1,6 +1,7 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import Main from "./components/Main";
 import FilteredProducts from "./components/FilteredProducts";
+import { SingleProduct } from "./components/SingleProduct";
 
 function App() {
 	return (
@@ -11,6 +12,10 @@ function App() {
 					<Route
 						path="/filteredProducts/:type"
 						element={<FilteredProducts />}
+					/>
+					<Route
+						path="/filteredProducts/:type/:id"
+						element={<SingleProduct />}
 					/>
 				</Routes>
 			</BrowserRouter>
