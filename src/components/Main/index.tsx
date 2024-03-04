@@ -1,6 +1,7 @@
-import FilteredProducts from "../FilteredProducts";
+import Footer from "../Footer";
 import Navbar from "../Navbar";
 import NavigateButtons from "../NavigateButtons";
+import ProductSection from "../ProductSection";
 import Slider from "../Slider";
 
 const Main = () => {
@@ -9,7 +10,8 @@ const Main = () => {
 			<Navbar />
 			<Slider />
 			<NavigateButtons />
-			<FilteredProducts />
+			<ProductSection />
+			<Footer />
 		</>
 	);
 };
