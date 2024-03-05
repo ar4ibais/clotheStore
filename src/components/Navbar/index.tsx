@@ -1,9 +1,13 @@
 import { useState } from "react";
-import logo from "../../assets/images/logo.png";
+import logo from "../../assets/images/logo_46_11zon.webp";
 import Cart from "../Cart";
-import { useAppSelector } from "../../redux/store";
+import { useAppDispatch, useAppSelector } from "../../redux/store";
+import { Avatar, Tooltip, Nutton } from "@material-tailwind/react";
+import { logout } from "../../redux/slices/authSlice";
 
 const Navbar = () => {
+	const dispatch = useAppDispatch();
+	const { name, image } = useAppSelector((state) => state.user.user);
 	const totalAmount = useAppSelector((state) => state.cart.totalAmount);
 	const [open, setOpen] = useState(false);
 
@@ -20,9 +24,6 @@ const Navbar = () => {
 					<img src={logo} alt="img" />
 				</div>
 				<div className="flex items-center">
-					<button className="font-inter text-base font-medium tracking-normal leading-none text-center mr-4">
-						Logout
-					</button>
 					<div className="flex items-center">
 						<svg
 							xmlns="http://www.w3.org/2000/svg"
@@ -74,6 +75,29 @@ const Navbar = () => {
 							)}
 						</div>
 					</div>
+					<div className="flex flex-row items-center cursor-pointer pl-4">
+						{image && (
+							<Avatar
+								src={image}
+								alt="avatar"
+								variant="rounded"
+								size="sm"
+								className="mr-2"
+							/>
+						)}
+						<div>
+							<p className="font-inter text-sm font-medium tracking-normal leading-none">
+								Hey, {name}!
+							</p>
+						</div>
+					</div>
+					<Tooltip content="Sign Out" placement="bottom">
+						<button
+							onClick={() => dispatch(logout())}
+							className="font-inter text-base font-medium tracking-normal leading-none text-center ml-4">
+							Log Out
+						</button>
+					</Tooltip>
 				</div>
 			</div>
 			<div className="flex bg-black p-4 w-full justify-around">
