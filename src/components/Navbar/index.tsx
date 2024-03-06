@@ -4,6 +4,7 @@ import Cart from "../Cart";
 import { useAppDispatch, useAppSelector } from "../../redux/store";
 import { Avatar, Tooltip, Nutton } from "@material-tailwind/react";
 import { logout } from "../../redux/slices/authSlice";
+import { Link } from "react-router-dom";
 
 const Navbar = () => {
 	const dispatch = useAppDispatch();
@@ -20,9 +21,11 @@ const Navbar = () => {
 				</h3>
 			</div>
 			<div className="flex justify-around items-center">
-				<div>
-					<img src={logo} alt="img" />
-				</div>
+				<Link to="/">
+					<div>
+						<img src={logo} alt="img" />
+					</div>
+				</Link>
 				<div className="flex items-center">
 					<div className="flex items-center">
 						<svg
