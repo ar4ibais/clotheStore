@@ -15,14 +15,14 @@ type ProdProps = {
 	img: string;
 	name: string;
 	text: string;
-	size: string[];
+	size: string[] | string;
 	color: string[];
 	price: number;
 };
 const ProductSectionItem = (props: ProdProps) => {
 	const { id, img, name, text, size, color, price } = props;
 	const dispatch = useAppDispatch();
-	const defaultSize = size[0],
+	const defaultSize = size && size[0],
 		defaultColor = color[0];
 	return (
 		<Card className="w-96" placeholder={undefined}>

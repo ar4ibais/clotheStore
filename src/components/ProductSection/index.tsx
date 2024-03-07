@@ -13,7 +13,10 @@ const ProductSection = () => {
 				{storeData.slice(0, 6).map((item) => {
 					return (
 						<div key={item.id}>
-							<ProductSectionItem {...item} />
+							<ProductSectionItem
+								size={item.size + ""}
+								{...item}
+							/>
 						</div>
 					);
 				})}
