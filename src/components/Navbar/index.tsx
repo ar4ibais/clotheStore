@@ -2,7 +2,7 @@ import { useState } from "react";
 import logo from "../../assets/images/logo_46_11zon.webp";
 import Cart from "../Cart";
 import { useAppDispatch, useAppSelector } from "../../redux/store";
-import { Avatar, Tooltip, Nutton } from "@material-tailwind/react";
+import { Avatar, Tooltip } from "@material-tailwind/react";
 import { logout } from "../../redux/slices/authSlice";
 import { Link } from "react-router-dom";
 
@@ -86,6 +86,7 @@ const Navbar = () => {
 								variant="rounded"
 								size="sm"
 								className="mr-2"
+								placeholder={undefined}
 							/>
 						)}
 						<div>

@@ -9,9 +9,15 @@ import { Tooltip } from "@material-tailwind/react";
 import { useAppDispatch, useAppSelector } from "../../redux/store";
 import { removeFromCart } from "../../redux/slices/cartSlice";
 
-const Cart = ({ openModal, setOpen }) => {
+type CartProps = {
+	openModal: boolean;
+	setOpen: (arg: boolean) => void;
+};
+
+const Cart = ({ openModal, setOpen }: CartProps) => {
 	const dispatch = useAppDispatch();
 	const { cart, totalPrice } = useAppSelector((state) => state.cart);
+	console.log("" && 7);
 	return (
 		<div>
 			<>
@@ -19,12 +25,16 @@ const Cart = ({ openModal, setOpen }) => {
 					<Dialog
 						className="border-0 outline-0"
 						open={openModal}
-						handler={() => setOpen(false)}>
-						<DialogHeader>Shopping Bag</DialogHeader>
+						handler={() => setOpen(false)}
+						placeholder={undefined}>
+						<DialogHeader placeholder={undefined}>
+							Shopping Bag
+						</DialogHeader>
 						<DialogBody
+							placeholder={undefined}
 							divider
 							className="flex flex-col justify-center items-start">
-							{cart.map((item, index) => {
+							{cart.map((item) => {
 								return (
 									<div
 										key={item.id}
@@ -87,6 +97,7 @@ const Cart = ({ openModal, setOpen }) => {
 													content="Remove from the Cart"
 													placement="bottom">
 													<Button
+														placeholder={undefined}
 														size="sm"
 														color="red"
 														ripple
@@ -107,7 +118,9 @@ const Cart = ({ openModal, setOpen }) => {
 								);
 							})}
 						</DialogBody>
-						<DialogFooter className="flex justify-start items-center">
+						<DialogFooter
+							placeholder={undefined}
+							className="flex justify-start items-center">
 							<p className="text-black text-base font-inter tracking-normal leading-none pt-2">
 								Total Price of All Products:{" "}
 								<span className="ml-2">{totalPrice}$</span>
@@ -116,11 +129,14 @@ const Cart = ({ openModal, setOpen }) => {
 					</Dialog>
 				) : (
 					<Dialog
+						placeholder={undefined}
 						className="border-0 outline-0"
 						open={openModal}
 						handler={() => setOpen(false)}>
-						<DialogHeader>Shopping Bag</DialogHeader>
-						<DialogBody>
+						<DialogHeader placeholder={undefined}>
+							Shopping Bag
+						</DialogHeader>
+						<DialogBody placeholder={undefined}>
 							<div>
 								<h1 className="text-black text-3xl font-inter font-bold tracking-normal leading-none py-4">
 									Your Bag is empty

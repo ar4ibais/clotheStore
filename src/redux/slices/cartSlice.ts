@@ -54,6 +54,7 @@ const cartSlice = createSlice({
 						name: productId.name,
 						color: productId.color,
 						img: productId.img,
+						text: productId.text,
 					});
 					state.totalAmount++;
 					state.totalPrice += productId.price;
@@ -80,7 +81,7 @@ const cartSlice = createSlice({
 					);
 					state.totalAmount--;
 					state.totalPrice -= productId.price;
-				} else {
+				} else if (exist) {
 					exist.amount--;
 					exist.totalPrice -= productId.price;
 					state.totalAmount--;

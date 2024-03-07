@@ -32,7 +32,8 @@ const NavigateButtons = () => {
 									className="hover:bg-gray-300 duration-500 ease-in-out"
 									onClick={() =>
 										dispatch(filterProducts(button))
-									}>
+									}
+									placeholder={undefined}>
 									{button}
 								</Button>
 							</Link>

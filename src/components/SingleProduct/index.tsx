@@ -84,6 +84,7 @@ export const SingleProduct = () => {
 						</div>
 						<Tooltip content="Add to Cart" placement="bottom">
 							<Button
+								placeholder={undefined}
 								color="gray"
 								size="lg"
 								variant="outlined"

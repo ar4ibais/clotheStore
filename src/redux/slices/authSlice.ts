@@ -1,7 +1,9 @@
-import { PayloadAction, createSlice } from "@reduxjs/toolkit";
+import { createSlice } from "@reduxjs/toolkit";
+
+const data = sessionStorage.getItem("authUser");
 
 const initialState = {
-	user: JSON.parse(sessionStorage.getItem("authUser")) || {
+	user: (data && JSON.parse(data)) || {
 		name: "",
 		password: "",
 		image: "",

@@ -1,3 +1,4 @@
+/* eslint-disable no-mixed-spaces-and-tabs */
 import { PayloadAction, createSlice } from "@reduxjs/toolkit";
 import { storeData } from "../../assets/data/dummyData";
 
@@ -7,7 +8,7 @@ export type Product = {
 	name: string;
 	text: string;
 	type: string;
-	size: string[];
+	size?: string[];
 	color: string[];
 	gender: string;
 	price: number;
@@ -19,9 +20,12 @@ type productState = {
 	error: boolean;
 };
 
+const filterData = sessionStorage.getItem("filteredData");
+const oneProdData = sessionStorage.getItem("oneProduct");
+
 const initialState: productState = {
-	filteredProducts: JSON.parse(sessionStorage.getItem("filteredData")) || [],
-	singleProduct: JSON.parse(sessionStorage.getItem("oneProduct")) || [],
+	filteredProducts: (filterData && JSON.parse(filterData)) || [],
+	singleProduct: (oneProdData && JSON.parse(oneProdData)) || [],
 	error: false,
 };
 
@@ -74,13 +78,13 @@ export const productsSlice = createSlice({
 				console.error(error);
 			}
 		},
-		sortByPrice: (state, action) => {
+		sortByPrice: (state) => {
 			try {
 				const price = state.filteredProducts.sort((a, b) => {
 					return a.price > b.price ? -1 : 1;
 				});
 				state.filteredProducts = price;
-				let count = price.length;
+				const count = price.length;
 				if (count > 1) {
 					const noError = false;
 					state.error = noError;
@@ -119,8 +123,8 @@ export const productsSlice = createSlice({
 		},
 		filterBySize: (state, action: PayloadAction<string>) => {
 			try {
-				const size = state.filteredProducts.filter((prod) =>
-					prod.size.includes(action.payload)
+				const size = state.filteredProducts.filter(
+					(prod) => prod.size && prod.size.includes(action.payload)
 				);
 				state.error = false;
 				state.filteredProducts = size;

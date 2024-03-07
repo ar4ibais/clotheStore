@@ -7,39 +7,41 @@ import {
 } from "@material-tailwind/react";
 import { Product, singleProduct } from "../../redux/slices/productsSlice";
 import { useAppDispatch } from "../../redux/store";
-import { Link, useParams } from "react-router-dom";
+import { Link } from "react-router-dom";
 
-const ProductCard = ({
-	id,
-	img,
-	name,
-	text,
-	type,
-	size,
-	color,
-	gender,
-	price,
-}: Product) => {
+const ProductCard = ({ id, img, name, text, type, color, price }: Product) => {
 	const dispatch = useAppDispatch();
 	return (
 		<Link to={`/filteredProducts/${type}/${id}`}>
 			<Card
 				className="mt-6 w-96"
-				onClick={() => dispatch(singleProduct(id))}>
-				<CardHeader color="blue-gray" className="relative h-96">
+				onClick={() => dispatch(singleProduct(id))}
+				placeholder={undefined}>
+				<CardHeader
+					color="blue-gray"
+					className="relative h-96"
+					placeholder={undefined}>
 					<img className="h-full w-full" src={img} alt="card-image" />
 				</CardHeader>
-				<CardBody className="text-center">
-					<Typography variant="h5" color="blue-gray" className="mb-2">
+				<CardBody placeholder={undefined} className="text-center">
+					<Typography
+						placeholder={undefined}
+						variant="h5"
+						color="blue-gray"
+						className="mb-2">
 						{name}
 					</Typography>
-					<Typography>{text}</Typography>
+					<Typography placeholder={undefined}>{text}</Typography>
 				</CardBody>
 				<CardFooter
+					placeholder={undefined}
 					divider
 					className="flex items-center justify-between py-3">
-					<Typography variant="small">{price}$</Typography>
+					<Typography placeholder={undefined} variant="small">
+						{price}$
+					</Typography>
 					<Typography
+						placeholder={undefined}
 						variant="small"
 						color="white"
 						className="flex gap-1">

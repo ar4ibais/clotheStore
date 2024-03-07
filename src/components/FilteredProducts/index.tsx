@@ -58,13 +58,15 @@ const FilteredProducts = () => {
 											size="lg"
 											variant="outlined"
 											ripple
-											className="text-black hover:bg-gray-300 duration-300 ease-in-out mr-4">
+											className="text-black hover:bg-gray-300 duration-300 ease-in-out mr-4"
+											placeholder={undefined}>
 											{item}
 										</Button>
 									</div>
 								);
 							})}
 							<Button
+								placeholder={undefined}
 								onClick={() => dispatch(sortByPrice())}
 								color="gray"
 								size="lg"
@@ -76,6 +78,7 @@ const FilteredProducts = () => {
 							<Menu>
 								<MenuHandler>
 									<Button
+										placeholder={undefined}
 										color="gray"
 										size="lg"
 										variant="outlined"
@@ -84,10 +87,11 @@ const FilteredProducts = () => {
 										Select a color
 									</Button>
 								</MenuHandler>
-								<MenuList>
+								<MenuList placeholder={undefined}>
 									{colorButtons.map((item, index) => {
 										return (
 											<MenuItem
+												placeholder={undefined}
 												onClick={() =>
 													dispatch(sortByColor(item))
 												}
@@ -103,6 +107,7 @@ const FilteredProducts = () => {
 								<Menu>
 									<MenuHandler>
 										<Button
+											placeholder={undefined}
 											color="gray"
 											size="lg"
 											variant="outlined"
@@ -111,10 +116,12 @@ const FilteredProducts = () => {
 											Select a size
 										</Button>
 									</MenuHandler>
+									{/* @ts-expect-error: error message */}
 									<MenuList>
 										{sizeButtons.map((item, index) => {
 											return (
 												<MenuItem
+													placeholder={undefined}
 													onClick={() =>
 														dispatch(
 															filterBySize(item)
@@ -131,7 +138,12 @@ const FilteredProducts = () => {
 						</div>
 						<div className="pr-14">
 							<Button
-								onClick={() => dispatch(filterProducts(type))}
+								placeholder={undefined}
+								onClick={() => {
+									if (type) {
+										dispatch(filterProducts(type));
+									}
+								}}
 								color="gray"
 								size="lg"
 								variant="outlined"

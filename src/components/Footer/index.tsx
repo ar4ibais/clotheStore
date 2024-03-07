@@ -1,5 +1,3 @@
-import React from "react";
-
 import logo from "../../assets/images/logo_46_11zon.webp";
 
 const Footer = () => {

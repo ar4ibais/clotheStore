@@ -8,10 +8,19 @@ import {
 	Button,
 } from "@material-tailwind/react";
 import { useAppDispatch } from "../../redux/store";
-import { addToCart, cartItem } from "../../redux/slices/cartSlice";
+import { addToCart } from "../../redux/slices/cartSlice";
 
-const ProductSectionItem = (props) => {
-	const { id, img, name, text, size, color, price, totalPrice } = props;
+type ProdProps = {
+	id: string;
+	img: string;
+	name: string;
+	text: string;
+	size: string[];
+	color: string[];
+	price: number;
+};
+const ProductSectionItem = (props: ProdProps) => {
+	const { id, img, name, text, size, color, price } = props;
 	const dispatch = useAppDispatch();
 	const defaultSize = size[0],
 		defaultColor = color[0];
@@ -69,6 +78,9 @@ const ProductSectionItem = (props) => {
 									color: defaultColor,
 									size: defaultSize,
 									amount: 1,
+									id,
+									price,
+									totalPrice: price,
 								})
 							)
 						}
